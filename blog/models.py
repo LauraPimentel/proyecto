@@ -1,17 +1,10 @@
 from django.db import models
-from django.utils import timezone
 
-class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-    def __str__(self):
-        return self.title
+class Alumno(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido_p = models.CharField(max_length=30)
+    apellido_m = models.CharField(max_length=30)
+    edad = models.IntegerField()
+    domicilio = models.CharField(max_length=50)
+    tutor = models.CharField(max_length=30)
+    tel_emergencia = models.CharField(max_length=30)
